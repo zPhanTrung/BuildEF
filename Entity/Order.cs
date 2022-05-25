@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Entity
+namespace BuildEF.Entity
 {
-    internal class Product
+    internal class Order
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal? Price { get; set; }
+        public int ProductQuanity { get; set; }
+        public DateTime? OrderTime { get; set; }
+        public decimal? GrandTotal { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

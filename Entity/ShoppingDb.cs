@@ -8,17 +8,15 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-[assembly: InternalsVisibleTo("BuildEF")]
-[assembly: InternalsVisibleTo("Service")]
-namespace DataLayer.Entity
+//[assembly: InternalsVisibleTo("BuildEF")]
+namespace BuildEF.Entity
 {
-    internal class ShoppingDb : DbContext
+    internal class ShoppingDb: DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
-        public ShoppingDb() : base() { }
         public ShoppingDb(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,7 +33,7 @@ namespace DataLayer.Entity
                 .HasConstraintName("FK_Product_OrderDetail")
                 .IsRequired(false);
 
-                entity.Property(p => p.Name)
+                entity.Property(p=>p.Name)
                 .IsUnicode(true)
                 .HasMaxLength(40)
                 .IsRequired(false);

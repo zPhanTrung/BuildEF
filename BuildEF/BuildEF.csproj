@@ -5,15 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Infrastructure\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.4" />
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

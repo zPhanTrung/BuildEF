@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Entity
+namespace BuildEF.Entity
 {
     internal class Product
     {

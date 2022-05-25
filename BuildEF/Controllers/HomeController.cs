@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using DataLayer.Entity;
+
 namespace BuildEF.Controllers
 {
     public class HomeController : Controller

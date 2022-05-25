@@ -10,8 +10,8 @@ namespace DataLayer.Entity
     {
         public int Id { get; set; }
         public int ProductQuanity { get; set; }
-        public DateTime OrderTime { get; set; }
-        public int GrandTotal { get; set; }
+        public DateTime? OrderTime { get; set; }
+        public decimal? GrandTotal { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

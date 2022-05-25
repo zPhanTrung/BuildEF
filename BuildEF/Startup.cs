@@ -8,8 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataLayer.Entity;
+//using DataLayer.Entity;
 using Microsoft.EntityFrameworkCore;
+using DataLayer.Entity;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace BuildEF
 {
@@ -31,7 +33,7 @@ namespace BuildEF
             services.AddDbContext<ShoppingDb>(
                     option =>
                     {
-                        option.UseMySql(connection, ServerVersion.AutoDetect(connection));
+                        option.UseMySql(connection, ServerVersion.AutoDetect(connection), b => b.SchemaBehavior(MySqlSchemaBehavior.Ignore));
                     });
         }
 
