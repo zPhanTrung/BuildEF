@@ -27,20 +27,57 @@ namespace DataLayer.Entity
             {
                 entity.ToTable("Product")
                 .HasKey(p => p.Id);
-                entity.ToTable("Product")
-                .HasKey(p => p.Id);
+
+                entity.HasMany(e => e.OrderDetails)
+                .WithOne(e => e.Product)
+                .HasConstraintName("FK_Product_OrderDetail");
+
+                entity.Property(p=>p.Name)
+                .IsUnicode(true)
+                .HasMaxLength(40)
+                .IsRequired(false);
+
+                entity.Property(p => p.Price)
+                .HasPrecision(8,3)
+                .IsRequired(false);
             });
 
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("Order")
                 .HasKey(p => p.Id);
+
+                entity.Property(p => p.OrderTime)
+                .HasColumnType("DateTime");
+
+                entity.Property(p => p.GrandTotal)
+                .HasPrecision(8, 3);
+
+                entity.HasMany(e => e.OrderDetails)
+                .WithOne(e => e.Order)
+                .HasConstraintName("FK_Order_OrderDetail");
             });
 
             modelBuilder.Entity<OrderDetail>(entity =>
             {
                 entity.ToTable("OderDetail")
                 .HasKey(p => p.Id);
+
+                entity.Property(p => p.Price)
+                .HasPrecision(8, 3);
+
+                entity.Property(p => p.SubTotal)
+                .HasPrecision(8, 3);
+
+                entity.HasOne(e => e.Product)
+                .WithMany()
+                .HasForeignKey(p => p.ProductId)
+                .HasConstraintName("FK_Product_OrderDetail");
+
+                entity.HasOne(e => e.Order)
+                .WithMany(e => e.OrderDetails)
+                .HasForeignKey(p => p.ProductId)
+                .HasConstraintName("FK_Order_OrderDetail");
             });
         }
     }
