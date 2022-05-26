@@ -7,56 +7,18 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Mapper
 {
-    class BaseMapper<TEntity> : IDisposable where TEntity : class
+    internal interface BaseMapper<TEntity>
     {
-        protected ShoppingDb db;
-        protected BaseMapper()
-        {
-            db = new ShoppingDb();
-        }
+        public ShoppingDb GetDbContext();
 
-        public BaseMapper<TEntity> GetBaseMapper()
-        {
-            return this;
-        }
-        public TEntity GetById(int id)
-        {
-            return db.Set<TEntity>().Find(id);
-        }
+        public TEntity GetById(int id);
 
-        public void Insert(TEntity entity)
-        {
-            db.AddRange(entity);
-            db.SaveChanges();
-        }
+        public void Insert(TEntity entity);
 
-        public void Delete(TEntity entity)
-        {
-            db.Remove(entity);
-            db.SaveChanges();
-        }
+        public void Delete(TEntity entity);
 
-        public List<TEntity> GetAll()
-        {
-            //foreach (var prop in db.GetType().GetProperties())
-            //{
-            //    var res = db.Model.GetEntityTypes().Where(t => t.Name == prop.Name).ToList();
-            //    if(res.Count>0)
-            //    {
-            //        object value = prop.GetValue(res);
-            //    }
-            //}
-            throw new NotImplementedException();
-        }
+        public List<TEntity> GetAll();
 
-
-        public void Uupdate(TEntity entity)
-        {
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        public void Update(TEntity entity);
     }
 }

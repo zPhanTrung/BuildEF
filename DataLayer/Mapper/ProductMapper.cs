@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Mapper
 {
-    interface OrderDetailMapper
+    internal interface ProductMapper
     {
-        public List<OrderDetail> GetByOrderId(int orderId);
+        public Product GetProductById(int id);
     }
 }

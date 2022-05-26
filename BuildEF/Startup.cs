@@ -10,6 +10,7 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Service.Service;
 using Service.Impl;
 using Service.Service.Impl;
+using DataLayer.Mapper;
 
 namespace BuildEF
 {
@@ -23,10 +24,11 @@ namespace BuildEF
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices (IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMvc();
+            //services.AddMvc();
+            //services.AddRazorPages();
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ShoppingDb>(
                     option =>
@@ -36,6 +38,11 @@ namespace BuildEF
             services.AddTransient<OrderDetailService, OrderDetailServiceImpl>();
             services.AddTransient<OrderService, OrderServiceImpl>();
             services.AddTransient<ProductService, ProductServiceImpl>();
+            services.AddTransient<StatisticsService, StatisticsServiceImpl>();
+            services.AddTransient<OrderMapper, OrderMapperImpl>();
+            services.AddTransient<ProductMapper, ProductMapperImpl>();
+            services.AddTransient<OrderDetailMapper, OrderDetailMapperImpl>();
+            services.AddTransient(typeof(BaseMapper<>), typeof(BaseMapperImpl<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

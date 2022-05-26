@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace Service.Service.Impl
 {
-    internal class OrderServiceImpl : BaseMapper<Order>, OrderService
+    internal class OrderServiceImpl : OrderService
     {
+        OrderMapper _mapper;
+        public OrderServiceImpl(OrderMapper mapper)
+        {
+            _mapper = mapper;
+    }
         public List<Order> GetOrderByDate(DateTime start, DateTime end)
         {
-            return db.Orders.Where(row => row.OrderTime >= start && row.OrderTime <= end).ToList();
+            return _mapper.GetOrderByDate(start, end);
         }
     }
 }

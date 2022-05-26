@@ -8,14 +8,19 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-[assembly: InternalsVisibleTo("BuildEF")]
 namespace Service.Impl
 {
-    class OrderDetailServiceImpl : OrderDetailMapper, OrderDetailService
+    class OrderDetailServiceImpl : OrderDetailService
     {
+        OrderDetailMapper _mapper;
+        public OrderDetailServiceImpl(OrderDetailMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         List<OrderDetail> OrderDetailService.GetByOrderId(int orderId)
         {
-            return GetByOrderId(orderId);
+            return _mapper.GetByOrderId(orderId);
         }
     }
 }

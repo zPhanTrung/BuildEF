@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 [assembly: InternalsVisibleTo("Service")]
 namespace DataLayer.Entity
 {
-    class ShoppingDb : DbContext
+    public class ShoppingDb : DbContext
     {
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        internal DbSet<Product> Products { get; set; }
+        internal DbSet<Order> Orders { get; set; }
+        internal DbSet<OrderDetail> OrderDetails { get; set; }
 
         public ShoppingDb() : base() { }
         public ShoppingDb(DbContextOptions options) : base(options) { }

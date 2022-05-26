@@ -10,6 +10,6 @@ namespace Service.Service
 {
     interface ProductService
     {
-        public Product GetById(int id);
+        public Product GetProductById(int id);
     }
 }
