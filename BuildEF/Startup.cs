@@ -4,14 +4,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-//using DataLayer.Entity;
 using Microsoft.EntityFrameworkCore;
 using DataLayer.Entity;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Service.Service;
+using Service.Impl;
+using Service.Service.Impl;
 
 namespace BuildEF
 {
@@ -35,6 +33,9 @@ namespace BuildEF
                     {
                         option.UseMySql(connection, ServerVersion.AutoDetect(connection), b => b.SchemaBehavior(MySqlSchemaBehavior.Ignore));
                     });
+            services.AddTransient<OrderDetailService, OrderDetailServiceImpl>();
+            services.AddTransient<OrderService, OrderServiceImpl>();
+            services.AddTransient<ProductService, ProductServiceImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

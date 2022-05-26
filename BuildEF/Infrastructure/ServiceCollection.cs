@@ -1,4 +1,4 @@
-﻿namespace BuildEF.Service
+﻿namespace BuildEF.Infrastructure
 {
     public class ServiceCollection
     {

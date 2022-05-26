@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(ShoppingDb))]
-    [Migration("20220525164200_init")]
+    [Migration("20220526014136_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,4 +1,5 @@
-﻿using DataLayer.Dto;
+﻿using DataLayer.Entity;
+using DataLayer.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Service.Service
 {
-    interface StatisticsService
+    interface ProductService
     {
-        public List<SaleProductAmountDto> StatisticSaleProductAmount(DateTime start, DateTime end);
+        public Product GetById(int id);
     }
 }

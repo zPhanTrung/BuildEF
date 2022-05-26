@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Entity
 {
-    internal class Order
+    class Order
     {
         public int Id { get; set; }
         public int ProductQuanity { get; set; }
